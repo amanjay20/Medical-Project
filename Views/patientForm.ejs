@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #035bff 0%, #46a9eb 100%);
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .container {
+            display: flex;
+            height: 60vh;
+            width: 80%;
+            max-width: 900px;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .left {
+            flex: 1;
+            background: url('https://img.freepik.com/free-vector/online-shopping-concept-illustration_114360-1187.jpg?ga=GA1.1.1766667324.1726086063&semt=ais_hybrid') no-repeat center center;
+            background-size: cover;
+        }
+
+        .right {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            border-color: #035bff;
+            outline: none;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .form-buttons .cancel {
+            background: #ccc;
+            color: #333;
+        }
+
+        .form-buttons .submit {
+            background: #035bff;
+            color: white;
+        }
+
+        .form-buttons .submit:hover {
+            background: #0246c1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="left"></div>
+        <div class="right">
+            <div class="form-title">Enter Patient Details</div>
+            <!-- Patient form to capture patient information -->
+            <form action="http://localhost:8080/api/v1/patient/createPatient" method="POST">
+
+                <div class="form-group">
+                    <!-- Patient Name Field -->
+                <label for="name">Patient Name:</label>
+                <input type="text" id="name" name="name" required>
+                <br><br>
+                </div>
+
+                <div class="form-group">
+                    <!-- Age Field -->
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+                <br><br>
+                </div>
+
+               <div class="form-group">
+                 <!-- Assigned Doctor Dropdown -->
+                 <label for="assignedDoctor">Assigned Doctor:</label>
+                 <select id="assignedDoctor" name="assignedDoctor" required>
+                     <% doctors.forEach(function(doctor) { %>
+                         <option value="<%= doctor._id %>">
+                             <%= doctor.name %> - <%= doctor.specialization %>
+                         </option>
+                         <% }) %>
+                 </select>
+                 <br><br>
+               </div>
+
+                <div class="form-buttons">
+                    <!-- Submit Button -->
+                <button type="submit" class="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

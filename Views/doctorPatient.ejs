@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Patients - Medical Clinic</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+nav {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav .logo h1 {
+  color: white;
+  margin: 0;
+  display: inline-block;
+}
+
+nav .nav-links {
+  list-style: none;
+  padding: 0;
+  float: right;
+}
+
+nav .nav-links li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+nav .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  transition: background-color 0.3s;
+}
+
+nav .nav-links a:hover {
+  background-color: #555;
+}
+
+/* Our Patients Section */
+.patients {
+  background-color: #fff;
+  padding: 150px 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.patient-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.patient-left {
+  width: 60%;
+}
+
+.patient-right {
+  width: 35%;
+}
+
+.patient-info {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.patient-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.patient-info p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+/* Patient Card */
+.patient-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.patient-card:hover {
+  transform: translateY(-10px);
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <div class="logo">
+        <h1>Clinic</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#patients">Our Patients</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Our Patients Section -->
+  <section id="patients" class="patients">
+    <div class="container">
+      <h2>Our Patients</h2>
+      <div class="patient-section">
+        <!-- Left Section: Patient Info -->
+         <div class="patient-left">
+            <% doctor.patients.forEach( (key)=>{ %>
+                <div class="patient-info">
+                    <h3>Patient 1</h3>
+                    <p>Name: <%=key.name%></p>
+                    <p>Age: <%=key.age%></p>
+                    <p>Gender: Male</p>
+                    <p>Date: 23.03.9090</p>
+                  </div>
+                <% }) %>
+         </div>
+        
+        
+
+        <!-- Right Section: Patient Card -->
+        <div class="patient-right">
+          <div class="patient-card">
+            <h3>Patient's Assigned Doctor</h3>
+            <p><%=doctor.name%></p>
+            <p>Specialization: <%=doctor.specialization%></p>
+            <p>Rating: ⭐⭐⭐⭐⭐</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Medical Clinic | All rights reserved.</p>
+      <p>Phone: (123) 456-7890 | Email: info@medicalclinic.com</p>
+    </div>
+  </footer>
+
+</body>
+</html>
