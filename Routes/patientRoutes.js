@@ -1,5 +1,6 @@
 const express = require("express")
-const {createPatient,getPatientsOfDoctor, patientForm} = require("../Controller/PatientController.js")
+const {createPatient,getPatientsOfDoctor, patientForm, allPatientdata, deletePatient, updatePatient, updatePatientData} = require("../Controller/PatientController.js")
+const Doctor = require("../Models/DoctorModel.js")
 
 
 
