@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Registration Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #035bff 0%, #46a9eb 100%);
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .container {
+            width: 90%;
+            /* Reduced width for responsiveness */
+            max-width: 1200px;
+            /* Max width for larger screens */
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #035bff;
+            outline: none;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .form-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .form-buttons .cancel {
+            background: #ccc;
+            color: #333;
+        }
+
+        .form-buttons .Submit {
+            background: #035bff;
+            color: #fff;
+        }
+
+        .form-buttons .Submit:hover {
+            background: #0246c1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-title">Doctor Registration Form</div>
+        <form action="http://localhost:8080/api/v1/doctor/updateDoctordata/<%=doctor._id%>" method="POST">
+            <!-- Doctor Name -->
+            <div class="form-group">
+                <label for="name">Doctor Name:</label>
+                <input type="text" id="name" name="name" value="<%=doctor.name%>" required>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="<%=doctor.email%>" required>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" value="<%=doctor.phone%>" maxlength="10" required>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" value="<%=doctor.dateOfBirth%>" required>
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender"  required>
+                    <option value="Male" <%= doctor.gender === 'Male' ? 'selected' : '' %>>Male</option>
+                    <option value="Female" <%= doctor.gender === 'Female' ? 'selected' : '' %>>Female</option>
+                    <option value="Other" <%= doctor.gender === 'Other' ? 'selected' : '' %>>Other</option>
+                </select>
+            </div>
+
+            <!-- Designation -->
+            <div class="form-group">
+                <label for="designation">Designation:</label>
+                <input type="text" id="designation" name="designation" value="<%=doctor.designation%>" required>
+            </div>
+
+            <!-- Degree -->
+            <div class="form-group">
+                <label for="degree">Degree:</label>
+                <input type="text" id="degree" name="degree" value="<%=doctor.degree%>" required>
+            </div>
+
+            <!-- Department -->
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" value="<%=doctor.department%>">
+            </div>
+
+            <!-- Speciality -->
+            <div class="form-group">
+                <label for="speciality">Speciality:</label>
+                <input type="text" id="speciality" name="speciality" value="<%=doctor.speciality%>">
+            </div>
+
+            <!-- Experience -->
+            <div class="form-group">
+                <label for="experience">Experience (in years):</label>
+                <input type="text" id="experience" name="experience" value="<%=doctor.experience%>" min="0">
+            </div>
+
+            <!-- Service Place -->
+            <div class="form-group">
+                <label for="servicePlace">Service Place:</label>
+                <input type="text" id="servicePlace" name="servicePlace" value="<%=doctor.servicePlace%>">
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <!-- <textarea type="text" id="address" name="address"  value="<%=doctor.address%>"></textarea> -->
+                <input type="text" name="address" id="address" value="<%=doctor.address%>">
+            </div>
+
+            <!-- Buttons -->
+            <div class="form-buttons">
+                <button type="button" class="cancel">Cancel</button>
+                <button type="submit" class="Submit">Add Doctor</button>
+            </div>
+        </form>
+    </div>
+
+    
+</body>
+
+</html>

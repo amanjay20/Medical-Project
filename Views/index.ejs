@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Doctors - Medical Clinic</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <style>
         /* General Styles */
         body {
@@ -125,7 +126,34 @@
             font-size: 16px;
             margin: 5px 0;
         }
+        table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
 
+    th, td {
+      border: 1px solid #ddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .delete-icon {
+      color: #ff4d4d;
+      cursor: pointer;
+    }
+
+    .delete-icon:hover {
+      color: #d63333;
+    }
         footer {
             background-color: #333;
             color: white;
@@ -160,25 +188,43 @@
     </header>
 
     <!-- Our Doctors Section -->
+    
+
     <section id="doctors" class="doctors">
         <div class="container">
             <h2>Our Doctors</h2>
             <div class="doctor-cards">
-                <% doctors.forEach(function(doctor){ %>
-                <!-- Doctor Cards -->
-               <a href="http://localhost:8080/api/v1/patient/getPatientsOfDoctor/<%=doctor._id%>">
-                <div class="doctor-card">
-                    <img src="doctor1.jpg" alt="img" class="doctor-image">
-                    <div class="doctor-info">
-                        <h3><%=doctor.name%></h3>
-                        <p>Years of Experience: <%= doctor.yearsOfExperience %></p>
-                        <p>Specialization: <%= doctor.specialization %></p>
-                        <p>Rating: ⭐⭐⭐⭐⭐</p>
-                    </div>
-                </div>
-               </a>
-                <% }) %> 
+                <table>
+                    <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>DOB</th>
+                          <th>Gender</th>
+                          <th>Designation</th>
+                          <th>Degree</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% doctors.forEach((doctor, index) => { %>
+                        <tr>
+                          <td><%= index + 1 %></td> <!-- Automatic S.No -->
+                          <td><%= doctor.name %></td>
+                          <td><%= doctor.email %></td>
+                          <td><%= doctor.phone %></td>
+                          <td><%= doctor.dateOfBirth %></td>
+                          <td><%= doctor.gender %></td>
+                          <td><%= doctor.designation %></td>
+                          <td><%= doctor.degree %></td>
+                          <td><a href="http://localhost:8080/api/v1/doctor/deleteDoctor/<%=doctor._id%>"><span class="delete-icon">🗑️</span></a><a href="http://localhost:8080/api/v1/doctor/update/<%=doctor._id%>"><span class="delete-icon"><i class="fa-solid fa-pen"></i></span></a></td>
 
+                        </tr>
+                        <% }) %>
+                      </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -190,7 +236,7 @@
             <p>Phone: (123) 456-7890 | Email: info@medicalclinic.com</p>
         </div>
     </footer>
-
+   
 </body>
 
 </html>
