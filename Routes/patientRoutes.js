@@ -3,6 +3,7 @@ const {createPatient,getPatientsOfDoctor, patientForm, allPatientdata, deletePat
 const Doctor = require("../Models/DoctorModel.js")
 
 
+
 const router = express.Router()
 
 router.post('/createPatient' , createPatient )

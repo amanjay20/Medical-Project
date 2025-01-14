@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment</title>
+  <link rel="stylesheet" href="offlineappointmentform.css">
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #0d1b4c;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+  
+  .form-container {
+    background-color: #142961;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 500px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #fff;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+  }
+  
+  label span {
+    color: red;
+  }
+  
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f4fc;
+  }
+  
+  textarea {
+    height: 70px;
+  }
+  
+  button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #333;
+  }
+  
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Book Appointment</h2>
+    <form action="http://localhost:8080/api/v1/appointment/postAppointment" method="post">
+      <div class="form-group">
+        <label for="Fullname">Name <span>*</span></label>
+        <input type="text" id="Fullname" placeholder="Enter your name" required>
+      </div>
+      <div class="form-group">
+        <label for="ContactNumber">Mobile No. <span>*</span></label>
+        <input type="number" id="ContactNumber" placeholder="Enter your mobile number" required>
+      </div>
+      <div class="form-group">
+        <label for="AppointmentDate">Date of Appointment <span>*</span></label>
+        <input type="date" id="AppointmentDate" required>
+      </div>
+      <div class="form-group">
+        <label for="AppointmentTime">Time of Appointment <span>*</span></label>
+        <input type="date" id="AppointmentDate" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address <span>*</span></label>
+        <input type="text" id="Address" placeholder="Enter your address" required>
+      </div>
+    <div class="form-group">
+        <label for="injury">Injury/Condition</label>
+        <input type="text" id="Injury" placeholder="Enter injury/condition">
+      </div>
+      <div class="form-group">
+        <label for="note">Note</label>
+        <textarea id="Note" placeholder="Enter any additional note"></textarea>
+      </div>
+      <button type="submit" class="btn">Add Appointment</button>
+    </form>
+  </div>
+</body>
+</html>
+
+
+
+

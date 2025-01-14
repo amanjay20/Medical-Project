@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Data</title>
+  <style>
+    table {
+      width: 80%;
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      text-align: center;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    .mode-online {
+      color: green;
+      font-weight: bold;
+    }
+
+    .mode-offline {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>All Form Data</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Mode</th>
+        <th>Name</th>
+        <th>contact</th>
+        <th>appointment date</th>
+        <th>appointment time</th>
+        <th>address</th>
+        <th>Injury</th>
+        <th>Note</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% appointments.forEach(function(Appointment) { %>
+        <tr>
+          <!-- Conditional class for mode color -->
+          <td class="<%= Appointment.Mode === 'online' ? 'mode-online' : 'mode-offline' %>">
+            <%= Appointment.Mode %>
+          </td>
+          <td>
+            <%= Appointment.Fullname%>
+          </td>
+
+          <td>
+            <%=Appointment.ContactNumber%>
+          </td>
+
+          <td>
+            <%=Appointment.AppointmentDate%>
+          </td>
+
+          <td>
+            <%=Appointment.AppointmentTime%>
+          </td>
+
+          <td>
+            <%=Appointment.Address%>
+          </td>
+
+          <td>
+            <%=Appointment.Injury%>
+          </td>
+
+          <td>
+            <%=Appointment.Note%>
+          </td>
+          <td>
+           <%=Appointment._id%>
+          </td>
+        </tr>
+        <% }) %>
+    </tbody>
+  </table>
+</body>
+
+</html>
