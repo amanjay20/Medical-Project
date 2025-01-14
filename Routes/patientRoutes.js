@@ -1,6 +1,6 @@
 const express = require("express")
 const {createPatient,getPatientsOfDoctor, patientForm} = require("../Controller/PatientController.js")
-const Doctor = require("../Models/DoctorModel.js")
+// const {}= require("../Models/DoctorModel.js")
 
 
 const router = express.Router()
