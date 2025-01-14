@@ -92,52 +92,39 @@
 <body>
     <div class="container">
         <h1>Add Patient</h1>
-        <form action="http://localhost:8080/api/v1/patient/createPatient" method="POST">
+        <form action="http://localhost:8080/api/v1/patient/updatePatientdata/<%=patient._id%>" method="POST">
             <div class="form-group">
                 <label for="name">Full Name *</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" value="<%=patient.name%>" required>
             </div>
 
             <div class="form-group">
-                <label for="gender">Gender:</label> 
-                <select name="gender" id="gender">
-                    <option value=""></option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender" value="<%=patient.gender%>" required>
+                    <option value="Male" <%= patient.gender === 'Male' ? 'selected' : '' %>>Male</option>
+                    <option value="Female" <%= patient.gender === 'Female' ? 'selected' : '' %>>Female</option>
+                    <option value="Other" <%= patient.gender === 'Other' ? 'selected' : '' %>>Other</option>
                 </select>
-               <!-- <div style="display: flex; gap: 5px; align-items: center;">
-                <input type="radio" id="male" name="gender" value="Male" required>
-                <label for="male">Male</label>
-               </div>
-                <div  style="display: flex; gap: 5px; align-items: center;">
-                    <input type="radio" id="female" name="gender" value="Female">
-                <label for="female">Female</label>
-                </div>
-                <div  style="display: flex; gap: 5px; align-items: center;" >
-                    <input type="radio" id="other" name="gender" value="Other">
-                <label for="other">Other</label>
-                </div> -->
             </div>
 
             <div class="form-group">
                 <label for="age">Age *</label>
-                <input type="text" id="age" name="age" required>
+                <input type="text" id="age" name="age" value="<%=patient.age%>" required>
             </div>
 
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" id="address" name="address">
+                <input type="text" id="address" name="address" value="<%=patient.address%>">
             </div>
 
             <div class="form-group">
                 <label for="phone">Contact No. *</label>
-                <input type="text" id="phone" name="phone" required>
+                <input type="text" id="phone" name="phone" value="<%=patient.phone%>" required>
             </div>
 
             <div class="form-group">
                 <label for="bloodGroup">Blood Group</label>
-                <select id="bloodGroup" name="bloodGroup">
+                <select id="bloodGroup" name="bloodGroup" value="<%=patient.bloodGroup%>">
                     <option value="" disabled selected>Select...</option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
@@ -152,13 +139,12 @@
             <div class="form-group">
                 <!-- Assigned Doctor Dropdown -->
                 <label for="assignedDoctor">Assigned Doctor:</label>
-                <select id="assignedDoctor" name="assignedDoctor" required>
+                <select id="assignedDoctor" name="assignedDoctor" value="<%=patient.assignedDoctor%>" required>
                     <% doctors.forEach(function(doctor) { %>
-                        <option value=""></option>
-                        <option value="<%= doctor._id %>">
+                        <option value="<%= doctor._id %>" <%= doctor._id.toString() === patient.assignedDoctor.toString() ? 'selected' : '' %>>
                             <%= doctor.name %> - <%= doctor.specialization %>
                         </option>
-                        <% }) %>
+                    <% }) %>
                 </select>
                 <br><br>
             </div>
@@ -167,52 +153,52 @@
 
             <div class="form-group">
                 <label for="systolicBP">Systolic BP</label>
-                <input type="text" id="systolicBP" name="systolicBP">
+                <input type="text" id="systolicBP" name="systolicBP" value="<%=patient.systolicBP%>">
             </div>
 
             <div class="form-group">
                 <label for="diastolicBP">Diastolic BP</label>
-                <input type="text" id="diastolicBP" name="diastolicBP">
+                <input type="text" id="diastolicBP" name="diastolicBP" value="<%=patient.diastolicBP%>">
             </div>
 
             <div class="form-group">
                 <label for="temperature">Temperature</label>
-                <input type="text" id="temperature" name="temperature">
+                <input type="text" id="temperature" name="temperature" value="<%=patient.temperature%>">
             </div>
 
             <div class="form-group">
                 <label for="weight">Weight (kg)</label>
-                <input type="text" id="weight" name="weight">
+                <input type="text" id="weight" name="weight" value="<%=patient.weight%>">
             </div>
 
             <div class="form-group">
                 <label for="respiratoryRate">Respiratory Rate (min)</label>
-                <input type="text" id="respiratoryRate" name="respiratoryRate">
+                <input type="text" id="respiratoryRate" name="respiratoryRate" value="<%=patient.respiratoryRate%>">
             </div>
 
             <div class="form-group">
                 <label for="heartRate">Heart Rate (BPM)</label>
-                <input type="text" id="heartRate" name="heartRate">
+                <input type="text" id="heartRate" name="heartRate" value="<%=patient.heartRate%>">
             </div>
 
             <div class="form-group">
                 <label for="bmi">BMI (kg/m2)</label>
-                <input type="text" id="bmi" name="bmi">
+                <input type="text" id="bmi" name="bmi" value="<%=patient.bmi%>">
             </div>
 
             <div class="form-group">
                 <label for="bloodSugarF">Blood Sugar (F)</label>
-                <input type="text" id="bloodSugarF" name="bloodSugarF">
+                <input type="text" id="bloodSugarF" name="bloodSugarF" value="<%=patient.bloodSugarF%>">
             </div>
 
             <div class="form-group">
                 <label for="bloodSugarR">Blood Sugar (R)</label>
-                <input type="text" id="bloodSugarR" name="bloodSugarR">
+                <input type="text" id="bloodSugarR" name="bloodSugarR" value="<%=patient.bloodSugarR%>">
             </div>
 
             <div class="form-group">
                 <label for="spo2">SPO2</label>
-                <input type="text" id="spo2" name="spo2">
+                <input type="text" id="spo2" name="spo2" value="<%=patient.spo2%>">
             </div>
 
             <div class="form-buttons">
